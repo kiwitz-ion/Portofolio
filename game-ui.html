@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAME UI — Bayu</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0f;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        /* BACK BUTTON */
+        .back {
+            display: inline-block;
+            margin-bottom: 50px;
+            color: #888;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            color: #8b7cff;
+        }
+
+        /* HEADER PROJECT */
+        .label {
+            color: #8b7cff;
+            font-size: 13px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 14px;
+        }
+
+        .meta-info strong {
+            color: white;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* BANNER GAMBAR UTAMA */
+        .project-banner {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #15151d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .project-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* PENJELASAN KARYA */
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            line-height: 1.8;
+            color: #ccc;
+            font-size: 16px;
+        }
+
+        .content-section h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: #15151d;
+            padding: 25px;
+            border-radius: 16px;
+            border-left: 4px solid #8b7cff;
+            margin: 20px 0;
+        }
+
+        /* NAVIGATION ACTION */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #8b7cff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #7a6be6;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #15151d;
+            color: #888;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            color: white;
+            border-color: #8b7cff;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 80px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #555;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .meta-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- TOMBOL KEMBALI -->
+        <a href="Portofolio.html" class="back">← Back to Portfolio</a>
+
+        <!-- HEADER PROJECT -->
+        <div class="label">08 — Game</div>
+        <h1>Game<br>UI.</h1>
+
+        <!-- INFORMASI DETAIL -->
+        <div class="meta-info">
+            <div>Category <strong>GAME UI • UI/UX</strong></div>
+            <div>Year <strong>2025</strong></div>
+            <div>Role <strong>Graphic Designer</strong></div>
+        </div>
+
+        <!-- GAMBAR/POSTER KARYA -->
+        <div class="project-banner">
+            <!-- Ganti dengan path poster asli kamu -->
+            <img src="images/poster-branding.jpg" alt="Game UI">
+        </div>
+
+        <!-- PENJELASAN KARYA -->
+        <div class="content-section">
+            <div>
+                <h2>Latar Belakang & Konsep</h2>
+                <p>
+                    Karya ini dirancang untuk membangun identitas visual yang kuat, profesional, dan berkarakter. 
+                    Melalui komposisi tipografi yang tegas, skema warna yang harmonis, serta elemen grafis modern, 
+                    poster ini menyampaikan nilai utama serta keahlian utama saya sebagai seorang desainer.
+                </p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Fokus Utama Desain:</strong></p>
+                <p>• Pendekatan visual minimalis namun memiliki daya tarik yang kuat.</p>
+                <p>• Penekanan pada legibilitas tipografi dan pesan visual yang intuitif.</p>
+            </div>
+
+            <div>
+                <h2>Proses Kreatif</h2>
+                <p>
+                    Proses pembuatan dimulai dari tahap riset audiens target, penentuan <i>moodboard</i> warna, 
+                    hingga pembuatan sketsa tata letak (*layout*). Setiap elemen visual ditempatkan dengan penuh pertimbangan 
+                    agar menghasilkan hirarki visual yang jelas dan menarik perhatian.
+                </p>
+            </div>
+        </div>
+
+        <!-- TOMBOL AKSI -->
+        <div class="action-buttons">
+            <a href="Contact.html" class="btn btn-primary">Tertarik Berkolaborasi? Hubungi Saya</a>
+            <a href="Portofolio.html" class="btn btn-secondary">Lihat Project Lainnya</a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            © 2026 Bayu — Portfolio
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

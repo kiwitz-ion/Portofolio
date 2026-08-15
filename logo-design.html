@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo-design — Bayu</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0f;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        /* BACK BUTTON */
+        .back {
+            display: inline-block;
+            margin-bottom: 50px;
+            color: #888;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            color: #8b7cff;
+        }
+
+        /* HEADER PROJECT */
+        .label {
+            color: #8b7cff;
+            font-size: 13px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 14px;
+        }
+
+        .meta-info strong {
+            color: white;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* KATA PEMBUKA */
+        .intro-text {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 50px;
+        }
+
+        .intro-text strong {
+            color: #ffffff;
+        }
+
+        /* WRAPPER KUMPULAN POSTER */
+        .poster-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .poster-item {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .poster-item h2 {
+            color: white;
+            font-size: 22px;
+        }
+
+        /* BANNER GAMBAR UTAMA */
+        .project-banner {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #15151d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .project-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* KHUSUS POIN 1 & POIN 2 (GAMBAR TUNGGAL VERTIKAL AGAR TIDAK TERLALU TINGGI) */
+        .single-poster .project-banner {
+            max-width: 300px; /* Batasi lebar poster vertikal */
+        }
+
+        .single-poster .project-banner img {
+            max-height: 500px; /* Batasi tinggi maksimal agar tidak terlalu panjang ke bawah */
+            object-fit: contain;
+        }
+
+        /* GRID UNTUK 2 GAMBAR BERDAMPINGAN (Poin 03 & 04) */
+        .banner-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 75%;
+        }
+
+        .banner-grid-2 .project-banner {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .banner-grid-2 .project-banner img {
+            max-height: none; /* Kembalikan ke normal untuk gambar di grid */
+            object-fit: cover;
+        }
+
+        /* SEPARATOR ANTAR POSTER */
+        .item-divider {
+            border: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 15px;
+        }
+
+        /* NAVIGATION ACTION */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #8b7cff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #7a6be6;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #15151d;
+            color: #888;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            color: white;
+            border-color: #8b7cff;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 80px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #555;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .meta-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .banner-grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .single-poster .project-banner {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- TOMBOL KEMBALI -->
+        <a href="Portofolio.html" class="back">← Back to Portfolio</a>
+
+        <!-- HEADER PROJECT -->
+        <div class="label">01 — LOGO GALLERY</div>
+        <h1>Logo<br>Design.</h1>
+
+        <!-- INFORMASI DETAIL UMUM -->
+        <div class="meta-info">
+            <div>Category <strong>Logo Design • Graphic Design</strong></div>
+            <div>Year <strong>2025</strong></div>
+            <div>Role <strong>Graphic Designer</strong></div>
+        </div>
+
+        <!-- KATA PEMBUKA -->
+        <div class="intro-text">
+            <p>
+                Kumpulan eksplorasi desain poster dengan beragam kategori—mulai dari <strong>personal branding</strong>, komersial <strong>makanan & minuman</strong>, hingga kebutuhan promosi <strong>provider</strong>. Setiap karya berfokus pada kekuatan visual yang menarik dan komunikasi pesan secara efektif.
+            </p>
+        </div>
+
+        <!-- GALERI POSTER -->
+        <div class="logo-gallery">
+
+            <!-- LOGO 1 (AYAM PENYET) -->
+            <article class="poster-item single-poster">
+                <h2>01. Ayam Penyet</h2>
+                <div class="project-banner">
+                    <img src="images/Ayam Penyet.jpeg" alt="Poster Personal Branding">
+                </div>
+                <hr class="item-divider">
+            </article>
+
+            <!-- LOGO AQUA  -->
+            <article class="poster-item single-poster">
+                <h2>02. Aqua</h2>
+                <div class="project-banner">
+                    <img src="images/Aqua.jpeg" alt="Poster Makanan">
+                </div>
+                <hr class="item-divider">
+            </article>
+
+            <!-- LOGO JURUSAN -->
+            <article class="poster-item">
+                <h2>03. Jurusan/Konsentrasi Keahlian</h2>
+                <div class="banner-grid-2">
+                    <div class="project-banner">
+                        <img src="images/Jurusan 1.jpeg" alt="Poster Minuman 1">
+                    </div>
+                    <div class="project-banner">
+                        <img src="images/Jurusan 2.jpeg" alt="Poster Minuman 2">
+                    </div>
+                </div>
+                <hr class="item-divider">
+            </article>
+
+        </div>
+
+        <!-- TOMBOL AKSI -->
+        <div class="action-buttons">
+            <a href="Contact.html" class="btn btn-primary">Tertarik Berkolaborasi? Hubungi Saya</a>
+            <a href="Portofolio.html" class="btn btn-secondary">Lihat Project Lainnya</a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            © 2026 Bayu — Portfolio
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
