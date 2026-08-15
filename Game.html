@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game-design — Bayu</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0f;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        /* BACK BUTTON */
+        .back {
+            display: inline-block;
+            margin-bottom: 50px;
+            color: #888;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            color: #8b7cff;
+        }
+
+        /* HEADER PROJECT */
+        .label {
+            color: #8b7cff;
+            font-size: 13px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 14px;
+        }
+
+        .meta-info strong {
+            color: white;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* KATA PEMBUKA */
+        .intro-text {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 50px;
+        }
+
+        .intro-text strong {
+            color: #ffffff;
+        }
+
+        /* WRAPPER KUMPULAN POSTER */
+        .game-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .poster-item {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .poster-item h2 {
+            color: white;
+            font-size: 22px;
+        }
+
+        /* SUB-POINT / MODEL STYLE */
+        .model-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .sub-title {
+            color: #888;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        /* BANNER GAMBAR UTAMA */
+        .project-banner {
+            width: 100%;
+            height: 380px; /* Tingginya disesuaikan agar proporsional */
+            border-radius: 20px;
+            overflow: hidden;
+            background: #15151d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0px; /* Jarak aman di dalam kotak gambar */
+        }
+
+        /* Mengubah ke contain agar seluruh gambar tampil utuh tanpa terpotong */
+        .project-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Class banner-short opsional bila ingin padding ekstra */
+        .project-banner.banner-short img {
+            object-fit: contain;
+            padding: 10px;
+        }
+
+        /* KHUSUS POIN 02: Bikin gambar full ke pinggir tanpa ruang hitam */
+        .project-banner.full-cover {
+            height: auto;
+            aspect-ratio: 11 / 9;
+            padding: 0;
+        }
+
+        .project-banner.full-cover img {
+            object-fit: cover;
+        }
+
+        /* GRID UNTUK 2 GAMBAR BERDAMPINGAN */
+        .banner-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            align-items: center;
+        }
+
+        /* GRID UNTUK 3 GAMBAR BERDAMPINGAN */
+        .banner-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+            align-items: center;
+        }
+
+        /* SEPARATOR ANTAR POSTER */
+        .item-divider {
+            border: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+
+        /* NAVIGATION ACTION */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #8b7cff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #7a6be6;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #15151d;
+            color: #888;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            color: white;
+            border-color: #8b7cff;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 80px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #555;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .meta-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .banner-grid-2,
+            .banner-grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .project-banner {
+                height: 250px;
+            }
+
+            .project-banner.full-cover {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- TOMBOL KEMBALI -->
+        <a href="index.html" class="back">← Back to Portfolio</a>
+
+        <!-- HEADER PROJECT -->
+        <div class="label">07 — GAME GALLERY</div>
+        <h1>Game<br>Design.</h1>
+
+        <!-- INFORMASI DETAIL UMUM -->
+        <div class="meta-info">
+            <div>Category <strong>Game Design • UI/UX</strong></div>
+            <div>Year <strong>2025</strong></div>
+            <div>Role <strong>Graphic Designer</strong></div>
+        </div>
+
+        <!-- KATA PEMBUKA -->
+        <div class="intro-text">
+<div class="intro-text">
+    <p>
+        Kumpulan perancangan visual untuk <strong>game dan aset interaktif</strong>. Menampilkan eksplorasi antarmuka (UI/UX game), konsep lingkungan visual, hingga materi promosi interaktif yang dirancang untuk pengalaman bermain yang imersif.
+    </p>
+</div>
+        </div>
+
+        <!-- GALERI GAME -->
+        <div class="game-gallery">
+
+            <!-- POIN 01. BLOCK DASH -->
+            <article class="poster-item">
+                <h2>01. Block Dash</h2>
+
+                <!-- Model 1 (Gambar 1 disesuaikan agar tidak kepanjangan) -->
+                <div class="model-group">
+                    <div class="sub-title">Model 1</div>
+                    <div class="banner-grid-2">
+                        <div class="project-banner banner-short">
+                            <img src="images/Background 1.png" alt="Block Dash Model 1 - Gambar 1">
+                        </div>
+                        <div class="project-banner">
+                            <img src="images/Block Dash 1.png" alt="Block Dash Model 1 - Gambar 2">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model 2 (Gambar 1 disesuaikan agar tidak kepanjangan) -->
+                <div class="model-group">
+                    <div class="sub-title">Model 2</div>
+                    <div class="banner-grid-2">
+                        <div class="project-banner banner-short">
+                            <img src="images/Background 2.png" alt="Block Dash Model 2 - Gambar 1">
+                        </div>
+                        <div class="project-banner">
+                            <img src="images/Block Dash 2.png" alt="Block Dash Model 2 - Gambar 2">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="item-divider">
+            </article>
+
+            <!-- POIN 02. PADEL INTERACTIVE GAME (MODEL 1 & MODEL 2 MASING-MASING 3 GAMBAR FULL) -->
+            <article class="poster-item">
+                <h2>02. Padel Interactive Wall</h2>
+
+                <!-- Model 1 (3 Gambar Full) -->
+                <div class="model-group">
+                    <div class="sub-title">Model 1</div>
+                    <div class="banner-grid-3">
+                        <div class="project-banner full-cover">
+                            <img src="images/Padel ungu 1.jpeg" alt="Jurusan Model 1 - View 1">
+                        </div>
+                        <div class="project-banner full-cover">
+                            <img src="images/Padel ungu 2.jpeg" alt="Jurusan Model 1 - View 2">
+                        </div>
+                        <div class="project-banner full-cover">
+                            <img src="images/Padel ungu 3.jpeg" alt="Jurusan Model 1 - View 3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model 2 (3 Gambar Full) -->
+                <div class="model-group">
+                    <div class="sub-title">Model 2</div>
+                    <div class="banner-grid-3">
+                        <div class="project-banner full-cover">
+                            <img src="images/Padel ijo 1.jpeg" alt="Jurusan Model 2 - View 1">
+                        </div>
+                        <div class="project-banner full-cover">
+                            <img src="images/Padel ijo 2.jpeg" alt="Jurusan Model 2 - View 2">
+                        </div>
+                        <div class="project-banner full-cover">
+                            <img src="images/Padel ijo 3.jpeg" alt="Jurusan Model 2 - View 3">
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- TOMBOL AKSI -->
+        <div class="action-buttons">
+            <a href="Contact.html" class="btn btn-primary">Tertarik Berkolaborasi? Hubungi Saya</a>
+            <a href="index.html" class="btn btn-secondary">Lihat Project Lainnya</a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            © 2026 Bayu — Portfolio
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
