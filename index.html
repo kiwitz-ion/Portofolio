@@ -24,7 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* Styling default untuk tag A yang membungkus card */
         .project-card-link {
             text-decoration: none;
             color: inherit;
@@ -57,7 +56,7 @@
         }
 
         .logo span {
-            color: #8b7cff;
+            color: #8c71ff;
         }
 
         nav ul {
@@ -78,67 +77,228 @@
         }
 
         /* ================================
-           HERO
+           HERO SECTION (GENSHIN LAYOUT & FONT AWAL)
         ================================= */
-        .hero {
+        .hero-main {
+            position: relative;
             min-height: 100vh;
-            padding: 120px 10% 80px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #0b0b0f;
+            padding: 120px 20px 60px;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .hero-genshin-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .start-title {
+            font-size: clamp(45px, 7vw, 85px);
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: normal;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .divider-line {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 250px;
+            margin-bottom: 12px;
+        }
+
+        .divider-line::before, .divider-line::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .divider-line span {
+            color: #8c71ff;
+            font-size: 12px;
+        }
+
+        .tap-begin {
+            font-size: 15px;
+            color: #999;
+            margin-bottom: 35px;
+            font-weight: normal;
+            animation: pulseText 2s infinite ease-in-out;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Server Box / Tombol Utama */
+        .server-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 320px;
+            padding: 14px 20px;
+            background: #15151d;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .server-box:hover {
+            border-color: #8c71ff;
+            background: #1c1c28;
+            box-shadow: 0 0 20px rgba(140, 113, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .server-icon {
+            width: 12px;
+            height: 12px;
+            background: #8c71ff;
+            border-radius: 2px;
+            transform: rotate(45deg);
+        }
+
+        /* User Tag */
+        .user-tag {
+            font-size: 15px;
+            color: #8c71ff;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .user-tag span {
+            color: #999;
+            font-weight: normal;
+        }
+
+        /* Side Menu Buttons */
+        .genshin-side-menu {
+            position: absolute;
+            right: 5%;
+            bottom: 12%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .side-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #15151d;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .side-btn:hover {
+            transform: scale(1.1);
+            border-color: #8c71ff;
+            box-shadow: 0 0 20px rgba(140, 113, 255, 0.4);
+        }
+
+        /* Build Version Text */
+        .build-version {
+            position: absolute;
+            bottom: 25px;
+            left: 5%;
+            font-size: 12px;
+            color: #555;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* ================================
+           BUTTON STYLES
+        ================================= */
+        .button, .btn-primary {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #8c71ff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 15px;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(140, 113, 255, 0.4);
+        }
+
+        .button:hover, .btn-primary:hover {
+            background: #7a5cf5;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(140, 113, 255, 0.6);
+        }
+
+        /* ================================
+           HERO PROFILE
+        ================================= */
+        .hero-profile {
+            min-height: 80vh;
+            padding: 100px 10% 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 70px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .hero-text {
             max-width: 650px;
-            order: 1; /* Di desktop, teks berada di sebelah kiri */
+            order: 1;
         }
 
         .small-text {
-            color: #8b7cff;
+            color: #8c71ff;
             font-size: 14px;
             letter-spacing: 3px;
             margin-bottom: 25px;
         }
 
-        .hero h1 {
-            font-size: clamp(60px, 8vw, 105px);
-            line-height: 0.95;
-            margin-bottom: 30px;
+        .hero-profile h2 {
+            font-size: clamp(40px, 5vw, 70px);
+            line-height: 1.1;
+            margin-bottom: 25px;
         }
 
-        .hero h1 span {
-            color: #8b7cff;
+        .hero-profile h2 span {
+            color: #8c71ff;
         }
 
-        .hero p {
+        .hero-profile p {
             color: #999;
-            font-size: 18px;
+            font-size: 17px;
             line-height: 1.7;
             max-width: 580px;
             margin-bottom: 35px;
         }
 
-        /* BUTTON */
-        .button {
-            display: inline-block;
-            padding: 15px 28px;
-            background: #8b7cff;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(139, 124, 255, 0.3);
-        }
-
-        /* ================================
-           PROFILE
-        ================================= */
+        /* PROFILE PHOTO BULAT */
         .profile-card {
             width: 380px;
             height: 380px;
@@ -148,10 +308,10 @@
             justify-content: center;
             background: linear-gradient(145deg, #242430, #121217);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%; /* Membuat kontainer berbentuk bulat melingkar */
+            border-radius: 50%;
             overflow: hidden;
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
-            order: 2; /* Di desktop, foto berada di sebelah kanan */
+            order: 2;
         }
 
         .profile-photo {
@@ -164,14 +324,14 @@
         }
 
         /* ================================
-           SECTION
+           SECTION GLOBAL
         ================================= */
         section {
             padding: 110px 10%;
         }
 
         .section-label {
-            color: #8b7cff;
+            color: #8c71ff;
             font-size: 13px;
             letter-spacing: 3px;
             margin-bottom: 12px;
@@ -203,7 +363,7 @@
 
         .project-card:hover {
             transform: translateY(-8px);
-            border-color: #8b7cff;
+            border-color: #8c71ff;
         }
 
         .project-image {
@@ -230,7 +390,7 @@
         }
 
         .project-number {
-            color: #8b7cff;
+            color: #8c71ff;
             font-size: 12px;
             letter-spacing: 2px;
             margin-bottom: 10px;
@@ -315,25 +475,24 @@
            RESPONSIVE
         ================================= */
         @media (max-width: 900px) {
-            .hero {
+            .hero-profile {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                padding-top: 130px;
                 gap: 40px;
             }
 
             .hero-text {
-                order: 2; /* Di layar tablet/HP, teks berpindah ke bawah */
+                order: 2;
             }
 
             .profile-card {
-                order: 1; /* Di layar tablet/HP, foto berpindah ke atas */
+                order: 1;
                 width: 280px;
                 height: 280px;
             }
 
-            .hero p {
+            .hero-profile p {
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -364,16 +523,8 @@
                 padding: 80px 6%;
             }
 
-            .hero {
-                padding: 120px 6% 70px;
-            }
-
-            .hero h1 {
-                font-size: 55px;
-            }
-
             .profile-card {
-                width: 240px; /* Ukuran foto menyesuaikan layar HP kecil */
+                width: 240px;
                 height: 240px;
             }
 
@@ -381,13 +532,24 @@
                 grid-template-columns: 1fr;
             }
 
-            .section-title {
+            .section-title, .contact h2 {
                 font-size: 40px;
             }
 
-            .contact h2 {
-                font-size: 40px;
+            .genshin-side-menu {
+                right: 3%;
+                bottom: 8%;
             }
+
+            .build-version {
+                left: 3%;
+                bottom: 15px;
+            }
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
     </style>
 </head>
@@ -407,16 +569,47 @@
         </ul>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
+    <!-- HERO SECTION (GENSHIN LAYOUT) -->
+    <section class="hero-main" id="home">
+        <div class="hero-genshin-content">
+            <h1 class="start-title">ENTER PORTFOLIO</h1>
+            
+            <div class="divider-line">
+                <span>✦</span>
+            </div>
+            
+            <div class="tap-begin">TAP TO BEGIN</div>
+
+            <a href="#profile" class="server-box">
+                <span class="server-icon"></span>
+                <span>ENTER PORTFOLIO</span>
+            </a>
+
+            <div class="user-tag">
+                User <span>Bayu (Graphic Designer)</span>
+            </div>
+        </div>
+
+        <div class="genshin-side-menu">
+            <a href="#about" class="side-btn" title="About">📋</a>
+            <a href="#contact" class="side-btn" title="Contact">✉️</a>
+        </div>
+
+        <div class="build-version">
+            OSRELAndroid1.1.1_R1460913_S1582714_D1624669
+        </div>
+    </section>
+
+    <!-- PROFIL BAYU -->
+    <section class="hero-profile" id="profile">
         <div class="hero-text">
             <div class="small-text">
                 FRESH GRADUATE • GRAPHIC DESIGNER
             </div>
-            <h1>
+            <h2>
                 Halo,<br>
                 Saya <span>Bayu.</span>
-            </h1>
+            </h2>
             <p>
                 Perkenalkan, saya Setiawan Bayuaji, lulusan SMK Sahid Jakarta jurusan Desain Komunikasi Visual (DKV) yang memiliki minat di bidang desain grafis dan animasi digital. Saya memiliki kemampuan dalam menggunakan Adobe Photoshop, Adobe Illustrator, dan Adobe After Effects untuk menciptakan karya visual yang kreatif, komunikatif, dan sesuai dengan kebutuhan.
             </p>
