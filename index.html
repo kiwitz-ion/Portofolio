@@ -131,7 +131,6 @@
             font-size: 10px;
         }
 
-        /* TAP TO BEGIN DIJADIKAN TOMBOL KLIK */
         .tap-begin-btn {
             display: inline-block;
             font-size: 13px;
@@ -154,7 +153,40 @@
             animation: none;
         }
 
-        /* USER TAG */
+        .server-box-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 280px;
+            padding: 12px 20px;
+            background: #121218;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .server-box-btn:hover {
+            border-color: #8c71ff;
+            box-shadow: 0 0 20px rgba(140, 113, 255, 0.4);
+            transform: translateY(-2px);
+            background: #181824;
+        }
+
+        .server-icon {
+            color: #8c71ff;
+            font-size: 12px;
+        }
+
         .user-tag {
             font-size: 14px;
             color: rgba(255, 255, 255, 0.7);
@@ -166,7 +198,6 @@
             font-weight: bold;
         }
 
-        /* SIDE MENU BUTTONS */
         .genshin-side-menu {
             position: absolute;
             right: 5%;
@@ -199,7 +230,6 @@
             box-shadow: 0 0 20px rgba(140, 113, 255, 0.4);
         }
 
-        /* BUILD VERSION TEXT */
         .build-version {
             position: absolute;
             bottom: 25px;
@@ -210,8 +240,15 @@
         }
 
         /* ================================
-           BUTTON STYLES
+           BUTTON STYLES & CTA GROUP
         ================================= */
+        .hero-cta-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         .button, .btn-primary {
             display: inline-block;
             padding: 14px 30px;
@@ -230,6 +267,85 @@
             background: #7a5cf5;
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(140, 113, 255, 0.6);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 14px 30px;
+            background: transparent;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 15px;
+            border: 2px solid #8c71ff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-outline:hover, .btn-outline.active {
+            background: #8c71ff;
+            box-shadow: 0 8px 25px rgba(140, 113, 255, 0.4);
+        }
+
+        /* ================================
+           OPSI 3: SKILL ACCORDION (EXPANDABLE)
+        ================================= */
+        .skills-accordion-wrapper {
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.3s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .skills-accordion-wrapper.show {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 20px;
+        }
+
+        .skills-accordion-card {
+            background: #15151d;
+            border: 1px solid rgba(140, 113, 255, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .dropdown-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #8c71ff;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            text-align: left;
+        }
+
+        .skills-list li {
+            font-size: 14px;
+            color: #dddddd;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skills-list li::before {
+            content: "✦";
+            color: #8c71ff;
+            font-size: 11px;
         }
 
         /* ================================
@@ -385,36 +501,11 @@
         /* ================================
            ABOUT
         ================================= */
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .about-text {
+        .about-content {
+            max-width: 800px;
             color: #999;
             font-size: 17px;
             line-height: 1.8;
-        }
-
-        .skills-title {
-            font-size: 25px;
-            margin-bottom: 20px;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill {
-            padding: 12px 18px;
-            background: #171720;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 50px;
-            color: #aaa;
         }
 
         /* ================================
@@ -473,12 +564,16 @@
                 margin-right: auto;
             }
 
-            .projects {
-                grid-template-columns: 1fr 1fr;
+            .hero-cta-group {
+                justify-content: center;
             }
 
-            .about {
+            .skills-list {
                 grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
@@ -554,7 +649,6 @@
                 <span>✦</span>
             </div>
             
-            <!-- TAP TO BEGIN SEBAGAI TOMBOL KLIK -->
             <a href="#profile" class="tap-begin-btn">TAP TO BEGIN</a>
 
             <div class="user-tag">
@@ -563,8 +657,8 @@
         </div>
 
         <div class="genshin-side-menu">
-            <a href="#about" class="side-btn" title="About">📋</a>
-            <a href="#contact" class="side-btn" title="Contact">✉️</a>
+            <a href="#profile" class="side-btn" title="About">👤</a>
+            <a href="#contact" class="side-btn" title="Contact">📬</a>
         </div>
 
         <div class="build-version">
@@ -585,7 +679,27 @@
             <p>
                 Perkenalkan, saya Setiawan Bayuaji, lulusan SMK Sahid Jakarta jurusan Desain Komunikasi Visual (DKV) yang memiliki minat di bidang desain grafis dan animasi digital. Saya memiliki kemampuan dalam menggunakan Adobe Photoshop, Adobe Illustrator, dan Adobe After Effects untuk menciptakan karya visual yang kreatif, komunikatif, dan sesuai dengan kebutuhan.
             </p>
-            <a href="#projects" class="button">View My Work</a>
+
+            <div class="hero-cta-group">
+                <a href="#projects" class="button">View My Work</a>
+                <button class="btn-outline" id="skillsBtn" onclick="toggleSkillsAccordion()">My Skills</button>
+            </div>
+
+            <!-- ACCORDION SKILLS SECTION -->
+            <div class="skills-accordion-wrapper" id="skillsAccordion">
+                <div class="skills-accordion-card">
+                    <div class="dropdown-title">SKILLS & TOOLS</div>
+                    <ul class="skills-list">
+                        <li>Adobe Photoshop</li>
+                        <li>Adobe Illustrator</li>
+                        <li>Adobe After Effects</li>
+                        <li>Graphic Design</li>
+                        <li>Branding & Logo</li>
+                        <li>UI / UX Design</li>
+                        <li>Typography</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="profile-card">
@@ -701,37 +815,6 @@
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="section-label">Tentang Saya</div>
-        <h2 class="section-title">Siapa saya???</h2>
-
-        <div class="about">
-            <div class="about-text">
-                <p>
-                    Saya adalah seorang fresh graduate yang memiliki ketertarikan di bidang desain grafis dan visual kreatif.
-                    <br><br>
-                    Saya memiliki minat dalam graphic design, branding, UI/UX, typography, dan pengembangan identitas visual.
-                    <br><br>
-                    Saya senang mengeksplorasi ide baru, mengembangkan konsep visual, dan menciptakan desain yang komunikatif serta memiliki karakter.
-                </p>
-            </div>
-
-            <div>
-                <h3 class="skills-title">My Skills</h3>
-                <div class="skills">
-                    <div class="skill">Graphic Design</div>
-                    <div class="skill">Branding</div>
-                    <div class="skill">UI / UX</div>
-                    <div class="skill">Typography</div>
-                    <div class="skill">Adobe Photoshop</div>
-                    <div class="skill">Adobe Illustrator</div>
-                    <div class="skill">Adobe After Effect</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CONTACT -->
     <section id="contact">
         <div class="contact">
@@ -748,6 +831,17 @@
     <footer>
         © 2026 Bayu. All Rights Reserved.
     </footer>
+
+    <!-- SCRIPT ACCORDION -->
+    <script>
+        function toggleSkillsAccordion() {
+            var accordion = document.getElementById('skillsAccordion');
+            var btn = document.getElementById('skillsBtn');
+            
+            accordion.classList.toggle('show');
+            btn.classList.toggle('active');
+        }
+    </script>
 
 </body>
 
