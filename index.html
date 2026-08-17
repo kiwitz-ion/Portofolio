@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bayu — Graphic Designer</title>
 
+    <!-- Chart.js CDN untuk Radar/Pentagon Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         /* ================================
            RESET
@@ -153,40 +156,6 @@
             animation: none;
         }
 
-        .server-box-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 280px;
-            padding: 12px 20px;
-            background: #121218;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            text-decoration: none;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            margin-bottom: 25px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .server-box-btn:hover {
-            border-color: #8c71ff;
-            box-shadow: 0 0 20px rgba(140, 113, 255, 0.4);
-            transform: translateY(-2px);
-            background: #181824;
-        }
-
-        .server-icon {
-            color: #8c71ff;
-            font-size: 12px;
-        }
-
         .user-tag {
             font-size: 14px;
             color: rgba(255, 255, 255, 0.7);
@@ -290,62 +259,85 @@
         }
 
         /* ================================
-           OPSI 3: SKILL ACCORDION (EXPANDABLE)
+           SKILL & TOOLS ACCORDION STYLING (VERTIKAL)
         ================================= */
         .skills-accordion-wrapper {
             width: 100%;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.3s ease;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.3s ease;
             opacity: 0;
             margin-top: 0;
         }
 
         .skills-accordion-wrapper.show {
-            max-height: 300px;
+            max-height: 1000px;
             opacity: 1;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .skills-accordion-card {
             background: #15151d;
             border: 1px solid rgba(140, 113, 255, 0.3);
             border-radius: 16px;
-            padding: 20px;
+            padding: 24px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            text-align: left;
         }
 
         .dropdown-title {
             font-size: 13px;
             font-weight: bold;
             color: #8c71ff;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
+            margin-bottom: 15px;
+            letter-spacing: 1.5px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 8px;
             text-transform: uppercase;
         }
 
-        .skills-list {
+        /* Chart container */
+        .chart-box {
+            position: relative;
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* Tools grid layout dengan Ikon Aplikasi */
+        .tools-list {
             list-style: none;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            text-align: left;
+            gap: 12px;
         }
 
-        .skills-list li {
+        .tools-list li {
             font-size: 14px;
             color: #dddddd;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
         }
 
-        .skills-list li::before {
-            content: "✦";
-            color: #8c71ff;
-            font-size: 11px;
+        .tools-list li:hover {
+            border-color: #8c71ff;
+            background: rgba(140, 113, 255, 0.1);
+        }
+
+        .tool-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            border-radius: 4px;
         }
 
         /* ================================
@@ -499,16 +491,6 @@
         }
 
         /* ================================
-           ABOUT
-        ================================= */
-        .about-content {
-            max-width: 800px;
-            color: #999;
-            font-size: 17px;
-            line-height: 1.8;
-        }
-
-        /* ================================
            CONTACT
         ================================= */
         .contact {
@@ -568,10 +550,6 @@
                 justify-content: center;
             }
 
-            .skills-list {
-                grid-template-columns: 1fr;
-            }
-
             .projects {
                 grid-template-columns: 1fr 1fr;
             }
@@ -597,6 +575,10 @@
             .profile-card {
                 width: 240px;
                 height: 240px;
+            }
+
+            .tools-list {
+                grid-template-columns: 1fr;
             }
 
             .projects {
@@ -688,16 +670,40 @@
             <!-- ACCORDION SKILLS SECTION -->
             <div class="skills-accordion-wrapper" id="skillsAccordion">
                 <div class="skills-accordion-card">
-                    <div class="dropdown-title">SKILLS & TOOLS</div>
-                    <ul class="skills-list">
-                        <li>Adobe Photoshop</li>
-                        <li>Adobe Illustrator</li>
-                        <li>Adobe After Effects</li>
-                        <li>Graphic Design</li>
-                        <li>Branding & Logo</li>
-                        <li>UI / UX Design</li>
-                        <li>Typography</li>
-                    </ul>
+                    <!-- BAGIAN 1: SKILLS (RADAR CHART PENTAGON) -->
+                    <div class="skills-section">
+                        <div class="dropdown-title">SKILLS</div>
+                        <div class="chart-box">
+                            <canvas id="skillsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 2: TOOLS (DENGAN GAMBAR LOGO APLIKASI) -->
+                    <div class="tools-section">
+                        <div class="dropdown-title">TOOLS</div>
+                        <ul class="tools-list">
+                            <li>
+                                <img src="icons/photoshop logo.png" alt="Photoshop" class="tool-icon">
+                                Adobe Photoshop
+                            </li>
+                            <li>
+                                <img src="icons/Illustrator Logo.webp" alt="Illustrator" class="tool-icon">
+                                Adobe Illustrator
+                            </li>
+                            <li>
+                                <img src="icons/canva logo.png" alt="Canva" class="tool-icon">
+                                Canva
+                            </li> 
+                            <li>
+                                <img src="icons/after effects logo.png" alt="After Effects" class="tool-icon">
+                                Adobe After Effects
+                            </li>
+                            <li>
+                                <img src="icons/capcut-icon-logo.svg" alt="Capcut" class="tool-icon">
+                                Capcut
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -832,14 +838,87 @@
         © 2026 Bayu. All Rights Reserved.
     </footer>
 
-    <!-- SCRIPT ACCORDION -->
+    <!-- SCRIPT ACCORDION & ANIMASI RADAR CHART -->
     <script>
+        let chartInstance = null;
+
         function toggleSkillsAccordion() {
             var accordion = document.getElementById('skillsAccordion');
             var btn = document.getElementById('skillsBtn');
             
             accordion.classList.toggle('show');
             btn.classList.toggle('active');
+
+            // Jika accordion dibuka
+            if (accordion.classList.contains('show')) {
+                if (!chartInstance) {
+                    initRadarChart();
+                } else {
+                    // Reset dan putar ulang animasi setiap kali accordion dibuka
+                    chartInstance.reset();
+                    chartInstance.update();
+                }
+            }
+        }
+
+        function initRadarChart() {
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            chartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Graphic Design', 'Branding & Logo', 'UI / UX Design', 'Typography', 'Illustration'],
+                    datasets: [{
+                        label: 'Skill Level',
+                        data: [90, 85, 80, 70, 40],
+                        backgroundColor: 'rgba(140, 113, 255, 0.25)',
+                        borderColor: '#8c71ff',
+                        pointBackgroundColor: '#8c71ff',
+                        pointBorderColor: '#ffffff',
+                        pointHoverBackgroundColor: '#ffffff',
+                        pointHoverBorderColor: '#8c71ff',
+                        borderWidth: 2,
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    
+                    // ANIMASI MEREKAR & MEMBAL (BOUNCE)
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeInOutBack'
+                    },
+
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 100,
+                            angleLines: {
+                                color: 'rgba(255, 255, 255, 0.15)'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.15)'
+                            },
+                            pointLabels: {
+                                color: '#dddddd',
+                                font: {
+                                    size: 11,
+                                    family: 'Arial'
+                                }
+                            },
+                            ticks: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
         }
     </script>
 
