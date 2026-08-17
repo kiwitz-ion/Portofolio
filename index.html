@@ -91,6 +91,7 @@
 
         .hero-text {
             max-width: 650px;
+            order: 1; /* Di desktop, teks berada di sebelah kiri */
         }
 
         .small-text {
@@ -139,31 +140,24 @@
            PROFILE
         ================================= */
         .profile-card {
-            width: 100%;
-            max-width: 320px;
-            height: 400px;
+            width: 380px;
+            height: 380px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(145deg, #242430, #121217);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
+            border-radius: 50%; /* Membuat kontainer berbentuk bulat melingkar */
             overflow: hidden;
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
-        }
-
-        @media (min-width: 768px) {
-            .profile-card {
-                max-width: 400px;
-                height: 400px;
-            }
+            order: 2; /* Di desktop, foto berada di sebelah kanan */
         }
 
         .profile-photo {
-            width: 98%;
-            height: 98%;
-            border-radius: 25px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
             object-fit: cover;
             object-position: center;
             display: block;
@@ -323,13 +317,25 @@
         @media (max-width: 900px) {
             .hero {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
+                text-align: center;
                 padding-top: 130px;
+                gap: 40px;
+            }
+
+            .hero-text {
+                order: 2; /* Di layar tablet/HP, teks berpindah ke bawah */
             }
 
             .profile-card {
-                width: 100%;
-                max-width: 350px;
+                order: 1; /* Di layar tablet/HP, foto berpindah ke atas */
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .projects {
@@ -364,6 +370,11 @@
 
             .hero h1 {
                 font-size: 55px;
+            }
+
+            .profile-card {
+                width: 240px; /* Ukuran foto menyesuaikan layar HP kecil */
+                height: 240px;
             }
 
             .projects {
