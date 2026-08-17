@@ -77,7 +77,7 @@
         }
 
         /* ================================
-           HERO SECTION (GENSHIN LAYOUT & FONT AWAL)
+           HERO SECTION (GENSHIN LAYOUT)
         ================================= */
         .hero-main {
             position: relative;
@@ -103,11 +103,11 @@
         }
 
         .start-title {
-            font-size: clamp(45px, 7vw, 85px);
+            font-size: clamp(38px, 6vw, 75px);
             font-weight: bold;
             color: #ffffff;
             margin-bottom: 10px;
-            letter-spacing: normal;
+            letter-spacing: 1px;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -123,73 +123,50 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .divider-line span {
             color: #8c71ff;
-            font-size: 12px;
+            font-size: 10px;
         }
 
-        .tap-begin {
-            font-size: 15px;
-            color: #999;
-            margin-bottom: 35px;
-            font-weight: normal;
-            animation: pulseText 2s infinite ease-in-out;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        /* Server Box / Tombol Utama */
-        .server-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 320px;
-            padding: 14px 20px;
-            background: #15151d;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #ffffff;
+        /* TAP TO BEGIN DIJADIKAN TOMBOL KLIK */
+        .tap-begin-btn {
+            display: inline-block;
+            font-size: 13px;
+            letter-spacing: 2.5px;
+            color: rgba(255, 255, 255, 0.5);
             text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            margin-bottom: 20px;
+            margin-bottom: 22px;
+            font-family: Arial, Helvetica, sans-serif;
+            transition: all 0.3s ease;
+            animation: pulseGenshin 2s infinite ease-in-out;
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        .tap-begin-btn:hover {
+            color: #ffffff;
+            opacity: 1;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+            animation: none;
+        }
+
+        /* USER TAG */
+        .user-tag {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        .server-box:hover {
-            border-color: #8c71ff;
-            background: #1c1c28;
-            box-shadow: 0 0 20px rgba(140, 113, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .server-icon {
-            width: 12px;
-            height: 12px;
-            background: #8c71ff;
-            border-radius: 2px;
-            transform: rotate(45deg);
-        }
-
-        /* User Tag */
-        .user-tag {
-            font-size: 15px;
+        .user-tag .user-label {
             color: #8c71ff;
             font-weight: bold;
-            font-family: Arial, Helvetica, sans-serif;
         }
 
-        .user-tag span {
-            color: #999;
-            font-weight: normal;
-        }
-
-        /* Side Menu Buttons */
+        /* SIDE MENU BUTTONS */
         .genshin-side-menu {
             position: absolute;
             right: 5%;
@@ -222,7 +199,7 @@
             box-shadow: 0 0 20px rgba(140, 113, 255, 0.4);
         }
 
-        /* Build Version Text */
+        /* BUILD VERSION TEXT */
         .build-version {
             position: absolute;
             bottom: 25px;
@@ -298,7 +275,6 @@
             margin-bottom: 35px;
         }
 
-        /* PROFILE PHOTO BULAT */
         .profile-card {
             width: 380px;
             height: 380px;
@@ -547,9 +523,9 @@
             }
         }
 
-        @keyframes pulseText {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+        @keyframes pulseGenshin {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
         }
     </style>
 </head>
@@ -572,21 +548,17 @@
     <!-- HERO SECTION (GENSHIN LAYOUT) -->
     <section class="hero-main" id="home">
         <div class="hero-genshin-content">
-            <h1 class="start-title">ENTER PORTFOLIO</h1>
+            <h1 class="start-title">CREATIVE WORKS</h1>
             
             <div class="divider-line">
                 <span>✦</span>
             </div>
             
-            <div class="tap-begin">TAP TO BEGIN</div>
-
-            <a href="#profile" class="server-box">
-                <span class="server-icon"></span>
-                <span>ENTER PORTFOLIO</span>
-            </a>
+            <!-- TAP TO BEGIN SEBAGAI TOMBOL KLIK -->
+            <a href="#projects" class="tap-begin-btn">TAP TO BEGIN</a>
 
             <div class="user-tag">
-                User <span>Bayu (Graphic Designer)</span>
+                <span class="user-label">User</span> Bayu (Graphic Designer)
             </div>
         </div>
 
