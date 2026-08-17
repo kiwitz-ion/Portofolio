@@ -76,9 +76,11 @@
         }
 
         h1 {
-            font-size: clamp(60px, 9vw, 100px);
-            line-height: 0.9;
+            font-size: clamp(40px, 8vw, 100px);
+            line-height: 1.05;
             margin-bottom: 30px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         h1 span {
@@ -118,6 +120,7 @@
             border-radius: 20px;
             text-decoration: none;
             transition: 0.35s;
+            overflow: hidden;
         }
 
         .contact-card:hover {
@@ -158,6 +161,7 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
+            min-width: 0; /* Mencegah flex item membesar melebihi wadah */
         }
 
         .contact-info small {
@@ -169,6 +173,8 @@
             color: white;
             font-size: 17px;
             font-weight: normal;
+            word-break: break-all; /* Agar email panjang tidak terpotong ke samping */
+            overflow-wrap: anywhere;
         }
 
         /* =========================
@@ -283,11 +289,12 @@
 
         @media (max-width: 650px) {
             body {
-                padding: 25px;
+                padding: 20px 16px;
             }
 
             .back {
-                margin-bottom: 50px;
+                margin-top: 10px;
+                margin-bottom: 35px;
             }
 
             .contacts {
@@ -295,22 +302,36 @@
             }
 
             h1 {
-                font-size: 60px;
+                font-size: 38px; /* Dikecilkan agar pas di layar HP tanpa terpotong */
+            }
+
+            .description {
+                font-size: 15px;
+                margin-bottom: 40px;
+            }
+
+            .contact-card {
+                padding: 16px;
+                gap: 15px;
             }
 
             .icon {
-                width: 58px;
-                height: 58px;
-                min-width: 58px;
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
             }
 
             .icon img {
-                width: 34px;
-                height: 34px;
+                width: 32px;
+                height: 32px;
+            }
+
+            .contact-info strong {
+                font-size: 14px; /* Disesuaikan agar email muat rapi di dalam card HP */
             }
 
             .form-section {
-                padding: 25px;
+                padding: 22px;
             }
         }
 
@@ -436,7 +457,6 @@
     <script>
         // 1. Inisialisasi EmailJS dengan Public Key kamu
         (function() {
-            // Ganti KODE_PUBLIC_KEY_KAMU dengan Public Key dari menu Account -> API Keys
             emailjs.init("giSCHtwwGczirIrep");
         })();
 
@@ -452,7 +472,6 @@
             btnSubmit.innerHTML = 'Mengirim...';
 
             const serviceID = 'service_je83ig7'; 
-            // Ganti KODE_TEMPLATE_ID_KAMU dengan Template ID dari dashboard EmailJS
             const templateID = 'template_7ofgwt9'; 
 
             emailjs.sendForm(serviceID, templateID, this)
